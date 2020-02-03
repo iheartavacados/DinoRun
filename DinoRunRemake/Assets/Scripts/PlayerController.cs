@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (canJump && Input.GetKeyDown(KeyCode.UpArrow))
+        if (canJump && Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKey(KeyCode.Space))
         {
             rb.velocity = new Vector2(rb.velocity.y, jumpVelocity);
         }
