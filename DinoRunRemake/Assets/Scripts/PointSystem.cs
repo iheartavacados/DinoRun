@@ -7,7 +7,7 @@ public class PointSystem : MonoBehaviour
     float elapsedTime;
     int points;
     int high;
-    int speedUpFactor = 5;
+    public int speedUpFactor = 5;
     private static TextMesh PointText;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class PointSystem : MonoBehaviour
 
         PointText.text = $"High: {high:00000}   Score: {points:00000}";
 
-        if(points%100 == 0 && points != 0)
+        if(points%200 == 0 && points != 0)
         {
             FlashScore();
             SpeedUp();
