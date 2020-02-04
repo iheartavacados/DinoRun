@@ -7,7 +7,7 @@ public class PointSystem : MonoBehaviour
     float elapsedTime;
     int points;
     int high;
-    int speedUpFactor = 15;
+    int speedUpFactor = 5;
     private static TextMesh PointText;
 
     // Start is called before the first frame update
