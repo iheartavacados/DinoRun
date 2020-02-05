@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistance: 500
   maxDistance: 900
+  spawning: 1
 --- !u!1001 &621006603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -571,6 +572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle V3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400876941641382534, guid: af78d40ea209724468ecb43cdc48f43b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af78d40ea209724468ecb43cdc48f43b, type: 3}
@@ -1336,6 +1342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle V2
       objectReference: {fileID: 0}
+    - target: {fileID: 8345408956512149261, guid: 03e53c5cbe480f846a8836ac894d5f56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 8345408956512149296, guid: 03e53c5cbe480f846a8836ac894d5f56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1468,6 +1479,11 @@ PrefabInstance:
     - target: {fileID: 8400876941641382534, guid: af78d40ea209724468ecb43cdc48f43b,
         type: 3}
       propertyPath: m_Name
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400876941641382534, guid: af78d40ea209724468ecb43cdc48f43b,
+        type: 3}
+      propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []

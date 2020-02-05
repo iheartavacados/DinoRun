@@ -11,6 +11,7 @@ public class Spawning : MonoBehaviour
     public float maxDistance = 900;
     private float nextDistance;
     private GameObject spawnPoint;
+    public bool spawning = true;
     
     private void Awake()
     {
@@ -35,12 +36,16 @@ public class Spawning : MonoBehaviour
 
     void Update()
     {
-        nextDistance -= ObstacleMovement.speed * Time.deltaTime;
-        if (nextDistance <= 0)
+        if(spawning == true)
         {
-            Spawn();
-            nextDistance = Random.Range(minDistance, maxDistance);
+            nextDistance -= ObstacleMovement.speed * Time.deltaTime;
+            if (nextDistance <= 0)
+            {
+                Spawn();
+                nextDistance = Random.Range(minDistance, maxDistance);
+            }
         }
+        
     }
     
     void Spawn()

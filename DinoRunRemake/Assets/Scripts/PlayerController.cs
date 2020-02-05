@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D bc2;
     private GameObject player;
     private bool canJump = true;
+    Spawning spawnscript;
 
     // Use this for initialization
     void Start()
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bc2 = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        spawnscript = GetComponent<Spawning>();
         playerHeight = bc2.size.y;
     }
 
@@ -62,17 +64,20 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if player collides with an object, 
-        if (collision.gameObject.name == "Obstacle")
+        if (collision.gameObject.tag == "Obstacle")
         {
             Debug.Log("Dino Hit");
             //stop jumping
-            canJump = false;
+            jumpVelocity = 0;
+            spawnscript.spawning = false;
+            Application.Quit();
         }
+ 
         //press space bar  
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             //reset position based on previous position
-        }
+        }*/
     }
 
     private void OnTriggerExit2D(Collider2D collision)
