@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D bc2;
     private GameObject player;
     private bool canJump = true;
-    public float speed = 1f;
 
     // Use this for initialization
     void Start()
@@ -58,12 +57,16 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         //if player collides with an object, 
         if (collision.gameObject.name == "Obstacle")
         {
-            //stop speed entirely
-            speed = 0f;
+            Debug.Log("Dino Hit");
+            //stop jumping
+            canJump = false;
         }
         //press space bar  
         if (Input.GetKeyDown(KeyCode.Space))
