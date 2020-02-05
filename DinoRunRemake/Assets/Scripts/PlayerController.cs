@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D bc2;
     private GameObject player;
     private bool canJump = true;
-    Spawning spawnscript;
+    internal static bool frozen;
 
     // Use this for initialization
     void Start()
@@ -17,16 +17,29 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bc2 = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        spawnscript = GetComponent<Spawning>();
         playerHeight = bc2.size.y;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (canJump && Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
+        
+        if(frozen)
+        {
+            if (Input.anyKeyDown)
+            {
+                Unfreeze();
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, 0);
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                return;
+            }
+        }
+        if (canJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)))
         {
             rb.velocity = new Vector2(rb.velocity.y, jumpVelocity);
+            canJump = false;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {//Rewrite this code when animation is in place * * * * * * * !!!!!!!!!!!!!
@@ -38,20 +51,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*
-    private bool isGrounded()
+    private void Unfreeze()
     {
-        if (player.transform.position.y == 0.5)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
+        
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        frozen = false;
     }
-    */
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -66,11 +71,9 @@ public class PlayerController : MonoBehaviour
         //if player collides with an object, 
         if (collision.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Dino Hit");
-            //stop jumping
-            jumpVelocity = 0;
-            spawnscript.spawning = false;
-            Application.Quit();
+            print("player hit");
+            //freeze moving components
+            frozen = true;
         }
  
         //press space bar  
@@ -78,14 +81,6 @@ public class PlayerController : MonoBehaviour
         {
             //reset position based on previous position
         }*/
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Ground")
-        {
-            canJump = false;
-        }
     }
 
 }

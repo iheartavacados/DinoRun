@@ -20,6 +20,10 @@ public class PointSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerController.frozen)
+        {
+            return;
+        }
         elapsedTime += Time.deltaTime * 10;
         points = (int)elapsedTime;
         

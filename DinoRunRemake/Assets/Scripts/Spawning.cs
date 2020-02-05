@@ -11,7 +11,6 @@ public class Spawning : MonoBehaviour
     public float maxDistance = 900;
     private float nextDistance;
     private GameObject spawnPoint;
-    public bool spawning = true;
     
     private void Awake()
     {
@@ -36,7 +35,7 @@ public class Spawning : MonoBehaviour
 
     void Update()
     {
-        if(spawning == true)
+        if(!PlayerController.frozen)
         {
             nextDistance -= ObstacleMovement.speed * Time.deltaTime;
             if (nextDistance <= 0)

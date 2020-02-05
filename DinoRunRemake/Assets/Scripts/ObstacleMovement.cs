@@ -55,7 +55,11 @@ public class ObstacleMovement: MonoBehaviour
         {
             return;
         }
-
+        if(PlayerController.frozen)
+        {
+            rigidbody2d.velocity = new Vector2(0, 0);
+            return;
+        }
         rigidbody2d.velocity = new Vector2((speed / speedFactor) * -1, rigidbody2d.velocity.y);
         //transform.position = new Vector3(transform.position.x + (ObstacleMovement.speed  / speedFactor * Time.deltaTime) * -1, transform.position.y, transform.position.z);
     }
