@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     internal static bool frozen;
 
+
+
     // Use this for initialization
     void Start()
     {
