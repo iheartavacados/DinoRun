@@ -21,7 +21,7 @@ public class PointSystem : MonoBehaviour
     {
         if (PlayerController.frozen)
         {
-            //if game pauses, reset regular score
+            //if game pauses, reset regular score;
             //update text to keep highest score
             return;
         }
@@ -52,9 +52,4 @@ public class PointSystem : MonoBehaviour
         ObstacleMovement.speed += speedUpFactor;
     }
 
-    void ResetScore()
-    {
-        
-        
-    }
 }
