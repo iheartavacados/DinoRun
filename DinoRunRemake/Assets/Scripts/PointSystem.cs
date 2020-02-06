@@ -5,44 +5,46 @@ using UnityEngine;
 public class PointSystem : MonoBehaviour
 {
     float elapsedTime;
-    int points;
+    int currentPoints;
     int high;
     public int speedUpFactor = 2;
     private static TextMesh PointText;
+    private static TextMesh HighPointText;
 
     // Start is called before the first frame update
     void Start()
     {
         PointText = GameObject.Find("Points").GetComponent<TextMesh>();
+        HighPointText = GameObject.Find("High Points").GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        elapsedTime += Time.deltaTime * 10;
+        currentPoints = (int)elapsedTime;
+
+        PointText.text = $"Score: {currentPoints: 00000}";
+
         if (PlayerController.frozen)
         {
-            //if game pauses, reset regular score;
-            //update text to keep highest score
-            return;
+            if (currentPoints > high)
+            {
+                high = currentPoints;
+
+                HighPointText.text = $"High Score: {high: 000000}";
+            }
         }
-        elapsedTime += Time.deltaTime * 10;
-        points = (int)elapsedTime;
-        
-        //if (points > high)
-        //{
-        //    high = points;
-        //}
 
-        PointText.text = $"High: {high:00000}   Score: {points:00000}";
-
-        if(points%100 == 0 && points != 0)
+        if (currentPoints%100 == 0 && currentPoints != 0)
         {
             FlashScore();
             SpeedUp();
         }
     }
 
-    void FlashScore()
+     void FlashScore()
     {
         //Input 100~!! animation score
     }
