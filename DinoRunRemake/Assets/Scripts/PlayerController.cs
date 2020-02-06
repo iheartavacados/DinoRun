@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-    public float jumpVelocity = 300f;
+    public float jumpVelocity = 100f;
     public static float playerHeight;
     private Rigidbody2D rb;
     private BoxCollider2D bc2;
