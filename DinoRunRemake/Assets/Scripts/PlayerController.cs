@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         bc2 = GetComponent<BoxCollider2D>();
+        GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHeight = bc2.size.y;
     }
@@ -35,12 +36,14 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
                 return;
             }
         }
         if (canJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)))
         {
             rb.velocity = new Vector2(rb.velocity.y, jumpVelocity);
+            GetComponent<AudioSource>().Play();
             canJump = false;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))

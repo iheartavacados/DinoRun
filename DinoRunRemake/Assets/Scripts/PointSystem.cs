@@ -32,8 +32,9 @@ public class PointSystem : MonoBehaviour
             if (currentPoints > high)
             {
                 high = currentPoints;
+                currentPoints = 0;
 
-                HighPointText.text = $"High Score: {high: 000000}";
+                HighPointText.text = $"High Score: {high: 00000}";
             }
         }
 
