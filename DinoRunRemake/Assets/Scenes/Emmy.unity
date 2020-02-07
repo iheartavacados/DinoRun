@@ -213,7 +213,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150682500}
-  m_Text: 'High Score: 00000'
+  m_Text: 'HI: 00000'
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -226,7 +226,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 19e1d7ca2043c864885fe7602c908752, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4285295724
 --- !u!23 &150682502
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150682500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.26, y: 9.05, z: -9.312238}
+  m_LocalPosition: {x: 0.29, y: 6.77, z: -9.312238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -358,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178924607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 4.36, z: 10}
+  m_LocalPosition: {x: 4.79, y: 4.36, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -738,6 +738,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af78d40ea209724468ecb43cdc48f43b, type: 3}
+--- !u!1 &621006604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8400876941641382534, guid: af78d40ea209724468ecb43cdc48f43b,
+    type: 3}
+  m_PrefabInstance: {fileID: 621006603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &621006605
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621006604}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad7cacac941988f4f92452adfc5f715e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &624466002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1349,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469361362}
-  m_Text: 'Score: 00000'
+  m_Text: 00000
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -1337,7 +1362,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 19e1d7ca2043c864885fe7602c908752, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4282006074
 --- !u!23 &1469361364
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1385,7 +1410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469361362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.51, y: 9.05, z: -9.312238}
+  m_LocalPosition: {x: 6.46, y: 6.77, z: -9.312238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1657,7 +1682,7 @@ Animator:
   m_GameObject: {fileID: 1924163601}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 136c17eb24a5ec24c98e887dbfc86623, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa57f3c929d8ae54d8ba5ab04fdab2f6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
