@@ -5,6 +5,7 @@ public enum Category { Ground, Face, Sky, Auto }
 
 public class ObstacleMovement: MonoBehaviour
 {
+    public const float originalSpeed = 300f;
     public static float speed = 300f;
     public static float speedFactor = 25f;
     private bool original = false; 
@@ -15,6 +16,11 @@ public class ObstacleMovement: MonoBehaviour
     public void SetOriginal()
     {
         original = true;
+    }
+
+    public bool isOriginal()
+    {
+        return original;
     }
 
     void Awake()
@@ -37,7 +43,7 @@ public class ObstacleMovement: MonoBehaviour
         switch (category)
         {
             case Category.Ground:
-                transform.position = new Vector3(transform.position.x, transform.localScale.y / 2);
+                //transform.position = new Vector3(transform.position.x, transform.localScale.y / 2);
                 break;
             case Category.Face:
                 transform.position = new Vector3(transform.position.x, transform.localScale.y / 2 + PlayerController.playerHeight * 1.1f);

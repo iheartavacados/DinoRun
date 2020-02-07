@@ -140,11 +140,8 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
---- !u!1101 &-4178357765503996464
-=======
+
 --- !u!1101 &-4090530074994388968
->>>>>>> ebd38c22318b3f70e535a1b4498bbd1670ad2e3f
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,17 +150,11 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-<<<<<<< HEAD
-    m_ConditionEvent: WhateverIWant
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 3483679844193207012}
-=======
+
     m_ConditionEvent: animState
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2966719213949438351}
->>>>>>> ebd38c22318b3f70e535a1b4498bbd1670ad2e3f
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -176,8 +167,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
-<<<<<<< HEAD
-=======
+
 --- !u!1102 &-3336699678483313839
 AnimatorState:
   serializedVersion: 5
@@ -230,7 +220,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
->>>>>>> ebd38c22318b3f70e535a1b4498bbd1670ad2e3f
 --- !u!1102 &-628556522450007129
 AnimatorState:
   serializedVersion: 5
@@ -266,11 +255,8 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-<<<<<<< HEAD
-  - m_Name: WhateverIWant
-=======
+
   - m_Name: animState
->>>>>>> ebd38c22318b3f70e535a1b4498bbd1670ad2e3f
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0

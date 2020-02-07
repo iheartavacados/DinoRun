@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawning : MonoBehaviour
 {
     //Can alter the size, you can add as many "obstacle types" as needed
-    string[] ObstacleType = {"Obstacle", "Obstacle V2", "Obstacle V3"};
+    string[] ObstacleType = {"Cacti1", "Cacti2", "Cacti3", "Cacti4", "Bird"};
+    private int numOfCacti = 4;
+    public float spawnGroup = 0.2f; //Likelihood of spawning a group
+    public float groupOffset = 0.3f;//How far apart to spawn each object within the group
     GameObject[] MasterObjects;
     public float minDistance = 300;
     public float maxDistance = 900;
@@ -49,8 +54,41 @@ public class Spawning : MonoBehaviour
     
     void Spawn()
     {
-        GameObject spawner = MasterObjects[Random.Range(0, MasterObjects.Length)];
+        //Spawn a group of cacti
+        if (Random.Range(0f, 1f) < spawnGroup) 
+        {
+            int spawnCount = Random.Range(2, 4);
+            for(int spawnIndex = 0; spawnIndex < spawnCount; spawnIndex++)
+            {
+                int spawnCacti = Random.Range(0, numOfCacti);
 
-        spawner = Instantiate(spawner, spawnPoint.transform.position, Quaternion.identity);
+                GameObject spawner = MasterObjects[spawnCacti];
+                Vector3 spawnAt = new Vector3(spawnPoint.transform.position.x + spawnIndex * groupOffset, spawner.transform.position.y);
+                spawner = Instantiate(spawner, spawnAt, Quaternion.identity);
+            }
+        }
+        else
+        {
+            int spawnIndex = Random.Range(0, MasterObjects.Length);
+
+            GameObject spawner = MasterObjects[spawnIndex];
+
+            Vector3 spawnAt = new Vector3(spawnPoint.transform.position.x, spawner.transform.position.y);
+            spawner = Instantiate(spawner, spawnAt, Quaternion.identity);
+        }
+        
+    }
+
+    internal static void clearObstacles()
+    {
+        GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        for(int i = 0; i < obstacles.Length; i++)
+        {
+            var temp = obstacles[i];
+            if(!temp.GetComponent<ObstacleMovement>().isOriginal())
+            {
+                Destroy(temp);
+            }
+        }
     }
 }
