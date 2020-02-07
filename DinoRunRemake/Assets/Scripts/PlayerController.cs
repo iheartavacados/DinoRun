@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
         if(frozen)
         {
             if (Input.anyKeyDown)
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
+                bc2.size = new Vector3(bc2.size.x, 0.75f);
                 return;
             }
         }
@@ -48,17 +47,16 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {//Rewrite this code when animation is in place * * * * * * * !!!!!!!!!!!!!
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
+            bc2.size = new Vector3(bc2.size.x, bc2.size.y / 2);
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
+            bc2.size = new Vector3(bc2.size.x, bc2.size.y * 2);
         }
     }
 
     private void Unfreeze()
     {
-        
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         frozen = false;
     }
@@ -80,12 +78,7 @@ public class PlayerController : MonoBehaviour
             //freeze moving components
             frozen = true;
         }
- 
-        //press space bar  
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //reset position based on previous position
-        }*/
+
     }
 
 }
