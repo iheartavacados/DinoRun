@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    public int speed = 5;
+    //public int speed = 5;
     Rigidbody2D rb;
     GameObject camera;
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class Gravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+       // rb.velocity = new Vector2(speed * -1, rb.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
