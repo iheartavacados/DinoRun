@@ -27,7 +27,7 @@ public class Gravity : MonoBehaviour
         {
             camera.transform.Rotate(0, 0, 180);
             camera.transform.localScale = new Vector3(-1, 1, 1);
-            Destroy(GameObject.Find("PlusContent"));
+            Destroy(GameObject.Find("UFO"));
         }
     }
 }
