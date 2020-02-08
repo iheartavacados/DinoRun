@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private GameObject player;
     private bool canJump = true;
     internal static bool frozen;
+    public Animator myAnimator;
 
 
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         bc2 = GetComponent<BoxCollider2D>();
+        myAnimator = GetComponent<Animator>();
         GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHeight = bc2.size.y;
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
     {
         bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
         bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
+        
+
     }
 
     private void UnCrouch()
@@ -97,4 +101,32 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void ChangeState(int state)
+    {
+        switch(state)
+        {
+            case 0:
+                myAnimator.SetInteger("State", 0);
+                break;
+
+            case 1:
+                myAnimator.SetInteger("State", 1);
+                break;
+
+            case 2:
+                myAnimator.SetInteger("State", 2);
+                break;
+
+            case 3:
+                myAnimator.SetInteger("State", 3);
+                break;
+        }
+    }
+
+    void CheckDinosaur()
+    {
+       //check if player presses up and call case statement
+       //check if player presses down and call case statement
+       //check if player hits something and call case statement
+    }
 }
