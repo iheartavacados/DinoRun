@@ -63,7 +63,7 @@ public class Spawning : MonoBehaviour
                 int spawnCacti = Random.Range(0, numOfCacti);
 
                 GameObject spawner = MasterObjects[spawnCacti];
-                Vector3 spawnAt = new Vector3(spawnPoint.transform.position.x + spawnIndex * groupOffset, spawner.transform.position.y);
+                Vector3 spawnAt = new Vector3(spawnPoint.transform.position.x + spawnIndex * groupOffset, spawner.transform.position.y, 0);
                 spawner = Instantiate(spawner, spawnAt, Quaternion.identity);
             }
         }
@@ -73,7 +73,7 @@ public class Spawning : MonoBehaviour
 
             GameObject spawner = MasterObjects[spawnIndex];
 
-            Vector3 spawnAt = new Vector3(spawnPoint.transform.position.x, spawner.transform.position.y);
+            Vector3 spawnAt = new Vector3(spawnPoint.transform.position.x, spawner.transform.position.y, 0);
             spawner = Instantiate(spawner, spawnAt, Quaternion.identity);
         }
         
