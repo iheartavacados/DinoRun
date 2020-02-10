@@ -5,29 +5,44 @@ using UnityEngine;
 public class Gravity : MonoBehaviour
 {
     //public int speed = 5;
+    public static bool isUpsideDown;
+    static float flipDurationTime = 15f;
+    static float flipBackTime = 0f;
     Rigidbody2D rb;
-    GameObject camera;
+    static GameObject levelCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        camera = GameObject.Find("Main Camera");
+        levelCamera = GameObject.Find("Main Camera");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       // rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+       if(isUpsideDown && flipBackTime < Time.time)
+        {
+            FlipGravity();
+            flipBackTime = 0;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            camera.transform.Rotate(0, 0, 180);
-            camera.transform.localScale = new Vector3(-1, 1, 1);
-            Destroy(GameObject.Find("UFO"));
+            FlipGravity();
+            flipBackTime = Time.time + flipDurationTime;
+  
         }
+    }
+
+    public static void FlipGravity()
+    {
+        levelCamera.transform.Rotate(0, 0, 180);
+        levelCamera.transform.localScale = new Vector3(-1, 1, 1);
+        isUpsideDown = !isUpsideDown;
     }
 }

@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Category { Ground, Face, Sky, Auto }
+public enum Category { Ground, Face, Sky, UFO, Auto }
 
 public class ObstacleMovement: MonoBehaviour
 {
+    public Category category;
     public const float originalSpeed = 300f;
     public static float speed = 300f;
     public static float speedFactor = 25f;
     private bool original = false; 
-    public Category category;
+
 
     Rigidbody2D rigidbody2d;
 
@@ -50,6 +51,9 @@ public class ObstacleMovement: MonoBehaviour
                 break;
             case Category.Sky:
                 transform.position = new Vector3(transform.position.x, transform.localScale.y + PlayerController.playerHeight * 2f);
+                break;
+            case Category.UFO:
+                transform.position = new Vector3(transform.position.x, transform.localScale.y + PlayerController.playerHeight * 1.3f);
                 break;
         }
 

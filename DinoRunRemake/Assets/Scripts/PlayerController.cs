@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "Ground")
         {
             canJump = true;
+            ChangeState(0);
         }
     }
 

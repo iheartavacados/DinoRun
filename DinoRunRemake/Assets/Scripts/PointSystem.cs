@@ -28,13 +28,18 @@ public class PointSystem : MonoBehaviour
     {
         if (PlayerController.frozen)
         {
+            GameOver.text = "G A M E  O V E R";
+
             if (currentPoints > high)
             {
                 high = currentPoints;
-
-                GameOver.text = "G A M E  O V E R";
  
                 HighPointText.text = $"Hi: {high: 00000}";
+            }
+
+            if(Gravity.isUpsideDown)
+            {
+                Gravity.FlipGravity();
             }
             return;
         }
