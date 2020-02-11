@@ -53,7 +53,7 @@ public class ObstacleMovement: MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.localScale.y + PlayerController.playerHeight * 2f);
                 break;
             case Category.UFO:
-                transform.position = new Vector3(transform.position.x, transform.localScale.y + PlayerController.playerHeight * 1.3f);
+                transform.position = new Vector3(transform.position.x, transform.localScale.y + PlayerController.playerHeight - 1.1f);
                 break;
         }
 

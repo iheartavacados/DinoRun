@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
         playerHeight = bc2.size.y;
         playerOffset = bc2.offset.y;
         randomC = GetComponent<RandomContainer>();
+
+        Vector2 ogPos = GameObject.Find("Button").position;
     }
 
     private void Update()
@@ -125,7 +127,11 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         Spawning.clearObstacles();
         PointSystem.resetScore();
-        //BackgroundMovement.resetBack();
+
+        GameObject.Find("Button").postion = ogPos;
+        
+        //Must reset the point systems end button back to og pos 
+
         frozen = false;
     }
 
