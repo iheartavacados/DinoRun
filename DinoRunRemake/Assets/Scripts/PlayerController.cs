@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public Animator myAnimator;
     public enum LevelChange { MasterContent, PlusContent };
 
+    private RandomContainer randomC;
+    public AudioClip[] jumpClips;
 
 
     // Use this for initialization
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHeight = bc2.size.y;
         playerOffset = bc2.offset.y;
+        randomC = GetComponent<RandomContainer>();
     }
 
     private void Update()
@@ -50,6 +53,9 @@ public class PlayerController : MonoBehaviour
             GetComponent<AudioSource>().Play();
             canJump = false;
             ChangeState(1);
+
+            randomC.clips = jumpClips;
+            randomC.PlaySound(false);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
