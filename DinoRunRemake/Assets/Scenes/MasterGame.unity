@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 239872859}
   - component: {fileID: 239872860}
   m_Layer: 0
-  m_Name: cloud_teamonions (1)
+  m_Name: cloud1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,7 +501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239872855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.84, y: 6.182, z: 0}
+  m_LocalPosition: {x: 14.48, y: 5.24, z: 10}
   m_LocalScale: {x: 2.932938, y: 3.13208, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -550,7 +550,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.023988843, y: -0.022463363}
@@ -945,7 +945,7 @@ Animator:
   m_GameObject: {fileID: 621006604}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f61b00a55d49d9f429d0764313c75006, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1f9305f1febf3e44596c8aa9e4f7091f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1175,7 +1175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082049611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.77, y: 5.716, z: 0}
+  m_LocalPosition: {x: 9.58, y: 3.99, z: 10}
   m_LocalScale: {x: 2.866, y: 2.666, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1224,7 +1224,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.000000029802322, y: -0.008796662}
@@ -1615,8 +1615,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468573627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.66, y: 3.22, z: 0}
-  m_LocalScale: {x: 1, y: 6.341, z: 1}
+  m_LocalPosition: {x: -11.66, y: 4.75, z: 0}
+  m_LocalScale: {x: 1, y: 9.403704, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -1955,6 +1955,7 @@ GameObject:
   - component: {fileID: 1924163607}
   - component: {fileID: 1924163608}
   - component: {fileID: 1924163609}
+  - component: {fileID: 1924163610}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1974,8 +1975,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68309bdfbca86f840a011b0f10bbbef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   jumpVelocity: 19
   myAnimator: {fileID: 0}
+  jumpClips:
+  - {fileID: 8300000, guid: 1ec418381c2e3a04dbbf4a4ddc643f7a, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: 2dfa8479db7b87641908a5c387735004, type: 3}
+  scoreClips:
+  - {fileID: 8300000, guid: ad4f8e057890a5042a302a792cdbcaad, type: 3}
+  transitionClips: []
 --- !u!61 &1924163603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2215,6 +2224,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1924163610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924163601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f337d3d0887afd245ad5dd7ecdc12e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips: []
+  output: {fileID: 0}
+  minPitch: 0.75
+  maxPitch: 1.25
 --- !u!1 &1980587691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,7 +2293,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.149641
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2292,7 +2317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980587691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.18, z: -10}
+  m_LocalPosition: {x: 0.18, y: 4.18, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

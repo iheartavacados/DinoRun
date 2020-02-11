@@ -1,8 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
+public enum LevelState { MasterContent, PlusContent }
+
+[Flags]
+public enum AnimationState
+    {   Master=0, Plus=4,
+        Walk = 0, Stand = 1, Crouch = 2, Dead = 3,
+        WalkPlus = 4, StandPlus = 5, CrouchPlus = 6, DeadPlus = 7
+    }
+
 public class PlayerController : MonoBehaviour
 {
+    public LevelState state;
     public float jumpVelocity = 100f;
     public static float playerHeight;
     public static float playerOffset;
@@ -12,11 +26,13 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     internal static bool frozen;
     public Animator myAnimator;
-    public enum LevelChange { MasterContent, PlusContent };
+
 
     private RandomContainer randomC;
     public AudioClip[] jumpClips;
-
+    public AudioClip[] deathClips;
+    public AudioClip[] scoreClips;
+    public AudioClip[] transitionClips;
 
     // Use this for initialization
     void Start()
@@ -41,9 +57,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(0, 0);
-                rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                UnCrouch();
+ 
                 return;
             }
         }
@@ -52,10 +66,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.y, jumpVelocity);
             GetComponent<AudioSource>().Play();
             canJump = false;
-            ChangeState(1);
+            ChangeState(AnimationState.Stand);
 
-            randomC.clips = jumpClips;
-            randomC.PlaySound(false);
+            PlayRandomSound(jumpClips);
+
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -65,19 +79,45 @@ public class PlayerController : MonoBehaviour
         {
             UnCrouch();
         }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            if(state == LevelState.MasterContent)
+            {
+                SceneManager.LoadScene("Mars");
+            }
+            else
+            {
+                SceneManager.LoadScene("MasterGame");
+            }
+            
+        }
     }
+
+    public void PlayRandomSound(AudioClip[] sounds)
+    {
+        if (randomC != null)
+        {
+            randomC.clips = sounds;
+            randomC.PlaySound(state == LevelState.MasterContent);
+        }
+        else
+        {
+            print("Random Container Not Attached to Player");
+        }
+    }
+
     private void Crouch()
     {
-        //bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
-        //bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
-        ChangeState(2);
+        bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
+        bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
+        ChangeState(AnimationState.Crouch);
     }
 
     private void UnCrouch()
     {
-        //bc2.size = new Vector3(bc2.size.x, playerHeight);
-        //bc2.offset = new Vector3(bc2.offset.x, playerOffset);
-        ChangeState(0);
+        bc2.size = new Vector3(bc2.size.x, playerHeight);
+        bc2.offset = new Vector3(bc2.offset.x, playerOffset);
+        ChangeState(AnimationState.Walk);
     }
 
     private void Unfreeze()
@@ -96,6 +136,10 @@ public class PlayerController : MonoBehaviour
             canJump = true;
             ChangeState(0);
         }
+        if(collision.gameObject.name == "UFO")
+        {
+            PlayRandomSound(transitionClips);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -103,50 +147,23 @@ public class PlayerController : MonoBehaviour
         //if player collides with an object, 
         if (collision.gameObject.tag == "Obstacle")
         {
-            print("player hit");
             //freeze moving components
             frozen = true;
-            ChangeState(3);
+            rb.velocity = new Vector2(0, 0);
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            PlayRandomSound(deathClips);
+            UnCrouch();
+            ChangeState(AnimationState.Dead); 
         }
 
     }
-
-    void ChangeState(int state)
+   
+    void ChangeState(AnimationState animationState)
     {
-        switch(state)
+        if (state == LevelState.PlusContent)
         {
-            case 0:
-                myAnimator.SetInteger("animState", 0);
-                break;
-
-            case 1:
-                myAnimator.SetInteger("animState", 1);
-                break;
-
-            case 2:
-                myAnimator.SetInteger("animState", 2);
-                break;
-
-            case 3:
-                myAnimator.SetInteger("animState", 3);
-                break;
-
-            case 4:
-                myAnimator.SetInteger("animState", 4);
-                break;
-
-            case 5:
-                myAnimator.SetInteger("animState", 5);
-                break;
-
-            case 6:
-                myAnimator.SetInteger("animState", 6);
-                break;
-
-            case 7:
-                myAnimator.SetInteger("animState", 7);
-                break;
-
+            animationState |= AnimationState.Plus;            
         }
+        myAnimator.SetInteger("animState", (int)animationState);
     }
 }

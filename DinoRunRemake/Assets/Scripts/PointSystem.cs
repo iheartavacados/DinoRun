@@ -58,7 +58,10 @@ public class PointSystem : MonoBehaviour
 
      void FlashScore()
     {
-        //Input 100~!! animation score
+        var currPlayer = GameObject.Find("Player");
+        var controller = currPlayer.GetComponent<PlayerController>();
+
+        controller.PlayRandomSound(controller.scoreClips);
     }
 
     void SpeedUp()

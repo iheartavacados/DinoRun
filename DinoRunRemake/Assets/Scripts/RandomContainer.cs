@@ -25,6 +25,12 @@ public class RandomContainer : MonoBehaviour
 
     public void PlaySound(bool noPitchVar)
     {
+        if (clips.Length == 0)
+        {
+            print("Sound Clips Array is Empty");
+            return;
+        }
+
         //randomize within the array length
         int randomClip = Random.Range(0, clips.Length);
 
@@ -36,6 +42,7 @@ public class RandomContainer : MonoBehaviour
 
         //set output for audiosource
         source.outputAudioMixerGroup = output;
+        source.loop = false;
 
         if (noPitchVar)
         {
