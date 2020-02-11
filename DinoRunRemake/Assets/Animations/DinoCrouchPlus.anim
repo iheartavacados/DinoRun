@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerWalk
+  m_Name: DinoCrouchPlus
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -809589802646915028, guid: ba2779e2bdff80c48887d7d9c140ee4b,
+      value: {fileID: -8161449434532709042, guid: 33a160de4707d2345954b770609905fb,
         type: 3}
-    - time: 0.1
-      value: {fileID: 8138956810423983942, guid: ba2779e2bdff80c48887d7d9c140ee4b,
+    - time: 0.13333334
+      value: {fileID: -4349907404866460169, guid: 33a160de4707d2345954b770609905fb,
         type: 3}
-    - time: 0.2
-      value: {fileID: -809589802646915028, guid: ba2779e2bdff80c48887d7d9c140ee4b,
+    - time: 0.26666668
+      value: {fileID: -4349907404866460169, guid: 33a160de4707d2345954b770609905fb,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -47,15 +47,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -809589802646915028, guid: ba2779e2bdff80c48887d7d9c140ee4b, type: 3}
-    - {fileID: 8138956810423983942, guid: ba2779e2bdff80c48887d7d9c140ee4b, type: 3}
-    - {fileID: -809589802646915028, guid: ba2779e2bdff80c48887d7d9c140ee4b, type: 3}
+    - {fileID: -8161449434532709042, guid: 33a160de4707d2345954b770609905fb, type: 3}
+    - {fileID: -4349907404866460169, guid: 33a160de4707d2345954b770609905fb, type: 3}
+    - {fileID: -4349907404866460169, guid: 33a160de4707d2345954b770609905fb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.21666667
+    m_StopTime: 0.28333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
