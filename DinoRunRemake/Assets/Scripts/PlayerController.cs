@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     internal static bool frozen;
     public Animator myAnimator;
+    public enum LevelChange { MasterContent, PlusContent };
 
 
 
@@ -123,6 +124,23 @@ public class PlayerController : MonoBehaviour
             case 3:
                 myAnimator.SetInteger("animState", 3);
                 break;
+
+            case 4:
+                myAnimator.SetInteger("animState", 4);
+                break;
+
+            case 5:
+                myAnimator.SetInteger("animState", 5);
+                break;
+
+            case 6:
+                myAnimator.SetInteger("animState", 6);
+                break;
+
+            case 7:
+                myAnimator.SetInteger("animState", 7);
+                break;
+
         }
     }
 }

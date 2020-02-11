@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 19
-  myAnimator: {fileID: 0}
+  myAnimator: {fileID: 386526711}
 --- !u!61 &386526715
 BoxCollider2D:
   m_ObjectHideFlags: 0
