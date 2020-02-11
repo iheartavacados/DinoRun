@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     internal static bool frozen;
     public Animator myAnimator;
+    public enum LevelChange { MasterContent, PlusContent };
 
+    private RandomContainer randomC;
+    public AudioClip[] jumpClips;
 
 
     // Use this for initialization
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHeight = bc2.size.y;
         playerOffset = bc2.offset.y;
+        randomC = GetComponent<RandomContainer>();
     }
 
     private void Update()
@@ -49,6 +53,9 @@ public class PlayerController : MonoBehaviour
             GetComponent<AudioSource>().Play();
             canJump = false;
             ChangeState(1);
+
+            randomC.clips = jumpClips;
+            randomC.PlaySound(false);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -61,15 +68,15 @@ public class PlayerController : MonoBehaviour
     }
     private void Crouch()
     {
-        bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
-        bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
+        //bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
+        //bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
         ChangeState(2);
     }
 
     private void UnCrouch()
     {
-        bc2.size = new Vector3(bc2.size.x, playerHeight);
-        bc2.offset = new Vector3(bc2.offset.x, playerOffset);
+        //bc2.size = new Vector3(bc2.size.x, playerHeight);
+        //bc2.offset = new Vector3(bc2.offset.x, playerOffset);
         ChangeState(0);
     }
 
@@ -78,7 +85,7 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         Spawning.clearObstacles();
         PointSystem.resetScore();
-        BackgroundMovement.resetBack();
+        //BackgroundMovement.resetBack();
         frozen = false;
     }
 
@@ -123,6 +130,23 @@ public class PlayerController : MonoBehaviour
             case 3:
                 myAnimator.SetInteger("animState", 3);
                 break;
+
+            case 4:
+                myAnimator.SetInteger("animState", 4);
+                break;
+
+            case 5:
+                myAnimator.SetInteger("animState", 5);
+                break;
+
+            case 6:
+                myAnimator.SetInteger("animState", 6);
+                break;
+
+            case 7:
+                myAnimator.SetInteger("animState", 7);
+                break;
+
         }
     }
 }

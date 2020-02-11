@@ -53,8 +53,13 @@ public class BackgroundMovement : MonoBehaviour
     public static void resetBack()
     {
         print("background reset");
+
         delayTrigger = 3;  // If resetting background triggers on exit, ignore it for first 3 update loops...
+
         bg1.transform.position = bg1start;
         bg2.transform.position = bg2start;
+
+        Debug.Log("4. Position after: "+bg1start);
+        Debug.Log("3. Position after: "+bg2start);
     }
 }
