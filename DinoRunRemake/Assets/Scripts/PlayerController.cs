@@ -62,15 +62,15 @@ public class PlayerController : MonoBehaviour
     }
     private void Crouch()
     {
-        bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
-        bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
+        //bc2.size = new Vector3(bc2.size.x, playerHeight / 2);
+        //bc2.offset = new Vector3(bc2.offset.x, playerOffset - playerHeight / 4);
         ChangeState(2);
     }
 
     private void UnCrouch()
     {
-        bc2.size = new Vector3(bc2.size.x, playerHeight);
-        bc2.offset = new Vector3(bc2.offset.x, playerOffset);
+        //bc2.size = new Vector3(bc2.size.x, playerHeight);
+        //bc2.offset = new Vector3(bc2.offset.x, playerOffset);
         ChangeState(0);
     }
 
