@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         Spawning.clearObstacles();
         PointSystem.resetScore();
-        BackgroundMovement.resetBack();
+        //BackgroundMovement.resetBack();
         frozen = false;
     }
 
