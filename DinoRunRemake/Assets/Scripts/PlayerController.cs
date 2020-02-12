@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     internal static bool frozen;
     public Animator myAnimator;
+    //public Vector3 ogPos;
 
 
     private RandomContainer randomC;
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
         playerOffset = bc2.offset.y;
         randomC = GetComponent<RandomContainer>();
 
-        Vector2 ogPos = GameObject.Find("Button").position;
+        //ogPos = new Vector3(GameObject.Find("Button").transform.position.x, GameObject.Find("Button").transform.position.y, GameObject.Find("Button").transform.position.z);
     }
 
     private void Update()
@@ -122,17 +123,18 @@ public class PlayerController : MonoBehaviour
         ChangeState(AnimationState.Walk);
     }
 
-    private void Unfreeze()
+    public void Unfreeze()
     {
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         Spawning.clearObstacles();
         PointSystem.resetScore();
 
-        GameObject.Find("Button").postion = ogPos;
-        
-        //Must reset the point systems end button back to og pos 
-
         frozen = false;
+    }
+
+    void disappearButton()
+    {
+        GameObject.Find("Button").SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -159,7 +161,9 @@ public class PlayerController : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             PlayRandomSound(deathClips);
             UnCrouch();
-            ChangeState(AnimationState.Dead); 
+            ChangeState(AnimationState.Dead);
+
+            GameObject.Find("Button").SetActive(true);
         }
 
     }

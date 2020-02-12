@@ -12,8 +12,8 @@ public class PointSystem : MonoBehaviour
     private static TextMesh PointText;
     private static TextMesh HighPointText;
     private static TextMesh GameOver;
-   GameObject button;
-    public Vector2 endPos;
+    //GameObject button;
+    //public Vector3 endPos;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,8 @@ public class PointSystem : MonoBehaviour
         GameOver = GameObject.Find("GameOver").GetComponent<TextMesh>();
         HighPointText.text = "";
         GameOver.text = "";
-        button = GameObject.Find("Button"); //position needs to be set to -0.75, 2.5
-        endPos = button.transform.position;
+        //button = GameObject.Find("Button"); //position needs to be set to -0.75, 2.5
+        //endPos = button.transform.position;
     }
 
    // Update is called once per frame
@@ -33,8 +33,6 @@ public class PointSystem : MonoBehaviour
         if (PlayerController.frozen)
         {
             GameOver.text = "G A M E  O V E R";
-
-            endPos = new Vector2(-0.75f, 2.5f);
             
 
             if (currentPoints > high)
