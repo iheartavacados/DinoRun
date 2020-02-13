@@ -8,7 +8,7 @@ public class PointSystem : MonoBehaviour
     static float elapsedTime;
     static int currentPoints;
     static int high;
-    public int speedUpFactor = 2;
+    public int speedUpFactor = 1;
     private static TextMesh PointText;
     private static TextMesh HighPointText;
     private static TextMesh GameOver;
