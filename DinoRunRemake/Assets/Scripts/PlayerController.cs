@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
- 
+                ChangeState(AnimationState.Dead);
+                
                 return;
             }
         }
