@@ -804,7 +804,7 @@ PrefabInstance:
     - target: {fileID: 8400876941641382529, guid: af78d40ea209724468ecb43cdc48f43b,
         type: 3}
       propertyPath: category
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8400876941641382530, guid: af78d40ea209724468ecb43cdc48f43b,
         type: 3}
@@ -1978,6 +1978,7 @@ MonoBehaviour:
   state: 0
   jumpVelocity: 19
   myAnimator: {fileID: 0}
+  currentAnimState: 0
   jumpClips:
   - {fileID: 8300000, guid: 1ec418381c2e3a04dbbf4a4ddc643f7a, type: 3}
   deathClips:
@@ -2317,7 +2318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980587691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18, y: 4.18, z: -10}
+  m_LocalPosition: {x: 0.18, y: 3.35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public enum LevelState { MasterContent, PlusContent }
+//public enum LevelState { MasterContent, PlusContent }
 
 [Flags]
 public enum AnimationState
@@ -16,7 +16,7 @@ public enum AnimationState
 
 public class PlayerController : MonoBehaviour
 {
-    public LevelState state;
+    public bool state; // False == Master, True == Plus
     public float jumpVelocity = 100f;
     public static float playerHeight;
     public static float playerOffset;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
     internal static bool frozen;
     public Animator myAnimator;
+    public AnimationState currentAnimState;
     //public Vector3 ogPos;
 
 
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         playerHeight = bc2.size.y;
         playerOffset = bc2.offset.y;
         randomC = GetComponent<RandomContainer>();
+        currentAnimState = AnimationState.Walk;
 
         //ogPos = new Vector3(GameObject.Find("Button").transform.position.x, GameObject.Find("Button").transform.position.y, GameObject.Find("Button").transform.position.z);
     }
@@ -84,7 +86,7 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
-            if(state == LevelState.MasterContent)
+            if(state == true)
             {
                 SceneManager.LoadScene("Mars");
             }
@@ -101,13 +103,14 @@ public class PlayerController : MonoBehaviour
         if (randomC != null)
         {
             randomC.clips = sounds;
-            randomC.PlaySound(state == LevelState.MasterContent);
+            randomC.PlaySound(state == false);
         }
         else
         {
             print("Random Container Not Attached to Player");
         }
     }
+    
 
     private void Crouch()
     {
@@ -122,7 +125,7 @@ public class PlayerController : MonoBehaviour
         bc2.offset = new Vector3(bc2.offset.x, playerOffset);
         ChangeState(AnimationState.Walk);
     }
-
+    
     public void Unfreeze()
     {
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
@@ -130,11 +133,6 @@ public class PlayerController : MonoBehaviour
         PointSystem.resetScore();
 
         frozen = false;
-    }
-
-    void disappearButton()
-    {
-        GameObject.Find("Button").SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -160,20 +158,24 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             PlayRandomSound(deathClips);
-            UnCrouch();
-            ChangeState(AnimationState.Dead);
 
-            GameObject.Find("Button").SetActive(true);
+            UnCrouch();
+            //ChangeState(AnimationState.Walk);
+
+
+            //ChangeState(AnimationState.Dead);
         }
 
     }
    
     void ChangeState(AnimationState animationState)
     {
-        if (state == LevelState.PlusContent)
+        if (state == true)
         {
             animationState |= AnimationState.Plus;            
         }
         myAnimator.SetInteger("animState", (int)animationState);
+
+        currentAnimState = animationState;
     }
 }

@@ -47,7 +47,7 @@ public class ObstacleMovement: MonoBehaviour
                 //transform.position = new Vector3(transform.position.x, transform.localScale.y / 2);
                 break;
             case Category.Face:
-                transform.position = new Vector3(transform.position.x, transform.localScale.y / 2);
+                transform.position = new Vector3(transform.position.x, transform.localScale.y / 1.65f);
                 break;
             case Category.Sky:
                 transform.position = new Vector3(transform.position.x, transform.localScale.y + PlayerController.playerHeight * 2f);
